@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './App.scss';
+import './App.sass';
 
 // Let's talk about using index.js and some other name in the component folder.
 // There's pros and cons for each way of doing this...
@@ -48,3 +48,4 @@ class App extends React.Component {
 }
 
 export default App;
+
