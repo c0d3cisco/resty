@@ -1,4 +1,4 @@
-import './Form.scss';
+import './Form.sass';
 
 function handleSubmit(e, handleApiCall) {
   e.preventDefault();

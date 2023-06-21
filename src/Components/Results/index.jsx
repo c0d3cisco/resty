@@ -1,5 +1,5 @@
 
-import './Results.scss'
+import './Results.sass'
 
 function Results({ data }) {
   return (
