@@ -1,10 +1,13 @@
-$backgroundColor: #efefef
-$radius: 40%
+@import '../../style/color-scheme.sass'
 
 form 
-  display: inline-block
+  display: flex
+  flex-direction: column
+  align-items: center
   margin: auto
-  width: 200px
+  // width: 200px
+  // height: 200px
+
 
   label 
     display: flex
@@ -19,3 +22,8 @@ form
 
         &:hover, &.active 
           background: #fff
+
+textarea
+  max-width: 500px   // Set the maximum width to 200px
+  max-height: 300px  // Set the maximum height to 200px
+  overflow-y: auto // Hide any horizontal overflow
