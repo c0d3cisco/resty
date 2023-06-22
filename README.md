@@ -2,11 +2,19 @@
 
 **Author:** Francisco Sanchez
 
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Overview
 
-Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts.
+Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts. The goal is to build a React application that will perform RESTful API calls to remote APIs, and display the data retrieved from those APIs.
+
+## Feature Tasks & Requirements
+
+June 21, 2021 - Phase 1\
+In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors, in place.
+
+June 22, 2021 - Phase 2\
+In this second phase, we will be connecting RESTy to live APIs, fetching and displaying remote data. Our primary focus will be to service GET requests.
 
 ## Getting Started
 
@@ -17,7 +25,11 @@ Project designed to reintroduce existing React concepts taught in Code 301 at Co
 
 ## Architecture
 
+Phase 1 UML\
 ![UML for Lab26](./public/labUML/lab26UML.png)
+
+Phase 2 UML\
+![UML for Lab27](./public/labUML/lab27UML.png)
 
 ## Sandbox Code
 

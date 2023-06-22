@@ -17,7 +17,7 @@ function App() {
 
   async function callApi(requestParams) {
     console.log('********', requestParams);
-    
+
     try {
       const response = await axios(requestParams);
   
@@ -29,7 +29,7 @@ function App() {
     } catch (error) {
 
       console.error('API call error:', error);
-      setData("data not found");
+      setData('No data to display.');
 
     }  
   }
@@ -42,7 +42,7 @@ function App() {
       <Form 
       handleApiCall={callApi}
       requestParams
-      setRequestParams />
+      setRequestParams={setRequestParams} />
       <Results data={data} />
       <Footer />
     </React.Fragment>
