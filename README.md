@@ -6,7 +6,7 @@
 
 ## Overview
 
-Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts. The goal is to build a React application that will perform RESTful API calls to remote APIs, and display the data retrieved from those APIs.
+Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts.
 
 ## Feature Tasks & Requirements
 
@@ -14,7 +14,7 @@ June 21, 2021 - Phase 1\
 In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors, in place.
 
 June 22, 2021 - Phase 2\
-In this second phase, we will be connecting RESTy to live APIs, fetching and displaying remote data. Our primary focus will be to service GET requests.
+In this second phase, the goal is to use hooks to interconnect the components, and establish a shared state between them in order to manage the form and the results. Additionally, tests have been added to the application to ensure proper functionality.
 
 ## Getting Started
 
