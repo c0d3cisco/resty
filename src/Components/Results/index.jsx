@@ -3,8 +3,8 @@ import './Results.sass'
 
 function Results({ data }) {
   return (
-    <section>
-      <pre>{data ? JSON.stringify(data, undefined, 2) : null}</pre>
+    <section >
+      {data ? <pre data-testid='preEl' >{ JSON.stringify(data, undefined, 2) }</pre> : null}
     </section>
   );
 }

@@ -2,11 +2,19 @@
 
 **Author:** Francisco Sanchez
 
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Overview
 
 Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts.
+
+## Feature Tasks & Requirements
+
+June 21, 2021 - Phase 1\
+In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors, in place.
+
+June 22, 2021 - Phase 2\
+In this second phase, the goal is to use hooks to interconnect the components, and establish a shared state between them in order to manage the form and the results. Additionally, tests have been added to the application to ensure proper functionality.
 
 ## Getting Started
 
@@ -17,7 +25,11 @@ Project designed to reintroduce existing React concepts taught in Code 301 at Co
 
 ## Architecture
 
+Phase 1 UML\
 ![UML for Lab26](./public/labUML/lab26UML.png)
+
+Phase 2 UML\
+![UML for Lab27](./public/labUML/lab27UML.png)
 
 ## Sandbox Code
 
