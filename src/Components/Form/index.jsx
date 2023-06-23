@@ -2,7 +2,7 @@ import './Form.sass';
 import { useState } from 'react';
 
 
-function Form({ handleApiCall, requestParams, setRequestParams }) {
+function Form({ handleApiCall, requestParams, setRequestParams , divRequestParams , setDivRequestParams }) {
 
   const [method, setMethod] = useState('');
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
@@ -23,7 +23,7 @@ function Form({ handleApiCall, requestParams, setRequestParams }) {
 
   function handleMethodChange(e) {
     setMethod(e.target.id.toUpperCase());
-    setRequestParams({
+    setDivRequestParams({
       ...requestParams,
       method: e.target.id.toUpperCase()
     });
@@ -31,7 +31,7 @@ function Form({ handleApiCall, requestParams, setRequestParams }) {
 
   function handleUrlChange(e) {
     setUrl(e.target.value)
-    setRequestParams({
+    setDivRequestParams({
       ...requestParams,
       url: e.target.value
     });

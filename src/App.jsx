@@ -7,9 +7,11 @@ import Footer from './Components/Footer';
 import Form from './Components/Form';
 import Results from './Components/Results';
 import axios from 'axios';
+
 function App() {
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
+  const [divRequestParams, setDivRequestParams] = useState({});
   const [loading, setLoading] = useState(false);
   const [i, setI] = useState(0);
 
@@ -34,10 +36,10 @@ function App() {
         setData('No data to display.');
       }
     }
-    console.log("test I", i)
+    console.log("test I", i);
     setI(i+1);
   }
-    console.log("test")
+    console.log("test");
     fetchData();
 
     // eslint-disable-next-line
@@ -46,13 +48,15 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-      <div data-testid='app-div-method'>Request Method: {requestParams?.method}</div>
-      <div data-testid='app-div-url'>URL: {requestParams?.url}</div>
+      <div data-testid='app-div-method'>Request Method: {divRequestParams?.method}</div>
+      <div data-testid='app-div-url'>URL: {divRequestParams?.url}</div>
       <Form
         handleApiCall={callApi}
         requestParams
         setRequestParams={setRequestParams}
-        show />
+        divRequestParams
+        setDivRequestParams={setDivRequestParams}
+        />
       <Results loading={loading} data={data} />
       <Footer />
     </React.Fragment>
