@@ -31,6 +31,7 @@ describe('App Component', () => {
     const results = await screen.findByTestId('results-pre');
 
     expect(appDivUrl).toHaveTextContent('/test-endpoint');
+    console.log('applesauce',results);
     expect(results).toHaveTextContent('Hello world');
   });
 
