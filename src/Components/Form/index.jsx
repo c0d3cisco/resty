@@ -54,9 +54,10 @@ function Form({ handleApiCall, requestParams, setRequestParams }) {
             id="url"
             type="text"
             name="url"
+            data-testid="urlTextBox"
             onChange={handleUrlChange}
           />
-          <button type="submit">GO!</button>
+          <button data-testid="submitButton" type="submit">GO!</button>
         </label>
         <label htmlFor="bearer">
           <span>Bearer: </span>

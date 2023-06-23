@@ -1,10 +1,22 @@
 
 import './Results.sass'
+import JsonView from '@uiw/react-json-view';
 
-function Results({ data }) {
+
+function Results({ data, loading }) {
+
   return (
     <section >
-      {data ? <pre data-testid='preEl' >{ JSON.stringify(data, undefined, 2) }</pre> : null}
+      {
+        loading ? <p data-testid='preEl'>Loading...</p> :
+      <pre data-testid="results-pre">
+        {
+        data
+        ? <JsonView id='JsonView' data-testid='preEl' value = {data} />
+        : null
+        }
+      </pre>
+      }
     </section>
   );
 }

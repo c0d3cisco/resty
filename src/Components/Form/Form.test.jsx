@@ -11,7 +11,7 @@ test('renders form and displays output after form submission', () => {
 
   // Render the Form component
   render(<Form
-		handleApiCall={handleApiCall} 
+		handleApiCall={handleApiCall}
 		setRequestParams={setRequestParams}
 		/>);
 
