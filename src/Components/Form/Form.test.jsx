@@ -8,11 +8,13 @@ test('renders form and displays output after form submission', () => {
   // Mock the handleApiCall function
   const handleApiCall = jest.fn();
 	const setRequestParams = jest.fn();
+	const setDivRequestParams = jest.fn();
 
   // Render the Form component
   render(<Form
 		handleApiCall={handleApiCall}
 		setRequestParams={setRequestParams}
+    setDivRequestParams={setDivRequestParams}
 		/>);
 
   // Fill in form inputs

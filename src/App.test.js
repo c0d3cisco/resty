@@ -21,13 +21,17 @@ describe('App Component', () => {
 
     render(<App />);
 
-    fireEvent.change(screen.getByRole('textbox', { name: /url/i }), { target: { value: '/test-endpoint' } });
-    fireEvent.click(screen.getByRole('button', { name: /GO!/i }));
+    const textBox = await screen.findByTestId('urlTextBox');
+    const button = await screen.findByTestId('submitButton');
+
+    fireEvent.change(textBox, { target: { value: '/test-endpoint' } });
+    fireEvent.click(button);
 
     const appDivUrl = await screen.findByTestId('app-div-url');
     const results = await screen.findByTestId('results-pre');
 
     expect(appDivUrl).toHaveTextContent('/test-endpoint');
+    console.log('applesauce',results);
     expect(results).toHaveTextContent('Hello world');
   });
 
@@ -35,9 +39,11 @@ describe('App Component', () => {
 
     render(<App />);
 
-    //TODO: refactor the next two lines with screen.findByTestId
-    fireEvent.change(screen.getByRole('textbox', { name: /url/i }), { target: { value: '/test-INCORRECT-endpoint' } });
-    fireEvent.click(screen.getByRole('button', { name: /GO!/i }));
+    const textBox = await screen.findByTestId('urlTextBox');
+    const button = await screen.findByTestId('submitButton');
+
+    fireEvent.change(textBox, { target: { value: '/test-INCORRECT-endpoint' } });
+    fireEvent.click(button);
 
     const appDivUrl = await screen.findByTestId('app-div-url');
     const results = await screen.findByTestId('results-pre');
