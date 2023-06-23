@@ -2,7 +2,7 @@
 
 **Author:** Francisco Sanchez
 
-**Version**: 1.1.0
+**Version**: 1.2.0
 
 ## Overview
 
@@ -10,11 +10,14 @@ Project designed to reintroduce existing React concepts taught in Code 301 at Co
 
 ## Feature Tasks & Requirements
 
-June 21, 2021 - Phase 1\
+June 21, 2021 - v1.0.0 - Phase 1\
 In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors, in place.
 
-June 22, 2021 - Phase 2\
+June 22, 2021 - v1.1.0 - Phase 2\
 In this second phase, the goal is to use hooks to interconnect the components, and establish a shared state between them in order to manage the form and the results. Additionally, tests have been added to the application to ensure proper functionality.
+
+June 23, 2021 - v1.2.0 - Phase 3\
+In this third phase, the goal was to refactor the codebase to utilize the useEffect() hook to make API calls to the backend server. Additionally, tests using [Mock Service Worker](https://github.com/mswjs/msw) have been added to the application to ensure proper functionality. ChatGPT was used to facilitate in the creation of the tests mocking examples. A deeper understanding of MSW was gained from comparing the documentation to the examples provided by ChatGPT.
 
 ## Getting Started
 
@@ -30,6 +33,9 @@ Phase 1 UML\
 
 Phase 2 UML\
 ![UML for Lab27](./public/labUML/lab27UML.png)
+
+Phase 3 UML\
+![UML for Lab28](./public/labUML/lab28UML.png)
 
 ## Sandbox Code
 
