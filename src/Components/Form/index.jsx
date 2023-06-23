@@ -2,7 +2,7 @@ import './Form.sass';
 import { useState } from 'react';
 
 
-function Form({ handleApiCall, requestParams, setRequestParams , divRequestParams , setDivRequestParams, historyDispatch }) {
+function Form({ handleApiCall, requestParams, setRequestParams }) {
 
   const [method, setMethod] = useState('');
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
@@ -23,7 +23,7 @@ function Form({ handleApiCall, requestParams, setRequestParams , divRequestParam
 
   function handleMethodChange(e) {
     setMethod(e.target.id.toUpperCase());
-    setDivRequestParams({
+    setRequestParams({
       ...requestParams,
       method: e.target.id.toUpperCase()
     });
@@ -31,7 +31,7 @@ function Form({ handleApiCall, requestParams, setRequestParams , divRequestParam
 
   function handleUrlChange(e) {
     setUrl(e.target.value)
-    setDivRequestParams({
+    setRequestParams({
       ...requestParams,
       url: e.target.value
     });
@@ -40,12 +40,7 @@ function Form({ handleApiCall, requestParams, setRequestParams , divRequestParam
 
   function handleSubmit(e, handleApiCall) {
     e.preventDefault();
-    if (!requestParams.method){ //} || !requestParams.url) {
-      alert('Please enter a valid request method');
-      return;
-    }
     // console.trace(requestParams);
-    historyDispatch({ type: 'HISTORY', payload: {method: requestParams.method, url: requestParams.url} });
     handleApiCall(requestParams); // equivalent to callApi(requestParams)
   }
 
