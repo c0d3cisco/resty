@@ -2,11 +2,11 @@
 
 **Author:** Francisco Sanchez
 
-**Version**: 1.2.0
+**Version**: 1.3.0
 
 ## Overview
 
-Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts.
+Project designed to reintroduce existing React concepts taught in Code 301 at Code fellows as well as become comfortable with new concepts. The goal of this project is to create a RESTy application that will allow users to enter a URL and select a REST method to retrieve data from an API. The data will be displayed in the browser in a formatted and styled manner. The application will also allow users to save the history of their API calls and display them in the browser.
 
 ## Feature Tasks & Requirements
 
@@ -18,6 +18,9 @@ In this second phase, the goal is to use hooks to interconnect the components, a
 
 June 23, 2021 - v1.2.0 - Phase 3\
 In this third phase, the goal was to refactor the codebase to utilize the useEffect() hook to make API calls to the backend server. Additionally, tests using [Mock Service Worker](https://github.com/mswjs/msw) have been added to the application to ensure proper functionality. ChatGPT was used to facilitate in the creation of the tests mocking examples. A deeper understanding of MSW was gained from comparing the documentation to the examples provided by ChatGPT.
+
+June 24, 2021 - v1.3.0 - Phase 4\
+In this fourth phase, use the useReducer() hook to create a history of API calls. The history will be displayed in the browser. Additionally, tests have been added to the application to ensure proper functionality.
 
 ## Getting Started
 
@@ -36,6 +39,9 @@ Phase 2 UML\
 
 Phase 3 UML\
 ![UML for Lab28](./public/labUML/lab28UML.png)
+
+Phase 4 UML\
+![UML for Lab29](./public/labUML/lab29UML.png)
 
 ## Sandbox Code
 
