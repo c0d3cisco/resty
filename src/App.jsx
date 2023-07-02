@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useReducer } from 'react';
 import './App.sass';
 import Header from './Components/Header';
