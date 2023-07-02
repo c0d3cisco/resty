@@ -4,56 +4,76 @@ import Form from '.';
 import '@testing-library/jest-dom';
 
 
-test('renders form and displays output after form submission', () => {
-  // Mock the handleApiCall function
-  const handleApiCall = jest.fn();
-	const setRequestParams = jest.fn();
-	const setDivRequestParams = jest.fn();
+describe('Form component', () => {
+  test('renders form and displays output after form submission', () => {
 
-  // Render the Form component
-  render(<Form
-		handleApiCall={handleApiCall}
-		setRequestParams={setRequestParams}
-    setDivRequestParams={setDivRequestParams}
-		/>);
+    const handleApiCall = jest.fn();
+    const setDivRequestParams = jest.fn();
+    const dispatch = jest.fn();
 
-  // Fill in form inputs
-  const urlInput = screen.getByLabelText('URL:');
-  fireEvent.change(urlInput, { target: { value: 'https://example.com' } });
+    render(<Form
+      handleApiCall={handleApiCall}
+      dispatch={dispatch}
+      setDivRequestParams={setDivRequestParams}
+    />);
 
-  const tokenInput = screen.getByLabelText('Bearer:');
-  fireEvent.change(tokenInput, { target: { value: 'my-token' } });
+    // Fill in form inputs
+    const urlInput = screen.getByLabelText('URL:');
+    fireEvent.change(urlInput, { target: { value: 'https://example.com' } });
 
-  const jsonInput = screen.getByLabelText('JSON Body:');
-  fireEvent.change(jsonInput, { target: { value: '{ "name": "John" }' } });
+    const tokenInput = screen.getByLabelText('Bearer:');
+    fireEvent.change(tokenInput, { target: { value: 'my-token' } });
 
-	let methodButton = screen.getByTestId('postTest');
-	fireEvent.click(methodButton);
+    const jsonInput = screen.getByLabelText('JSON Body:');
+    fireEvent.change(jsonInput, { target: { value: '{ "name": "John" }' } });
 
-	methodButton = screen.getByTestId('putTest');
-	fireEvent.click(methodButton);
+    let methodButton = screen.getByTestId('postTest');
+    fireEvent.click(methodButton);
 
-	methodButton = screen.getByTestId('getTest');
-	fireEvent.click(methodButton);
+    methodButton = screen.getByTestId('putTest');
+    fireEvent.click(methodButton);
 
-	// last one to be pressed
-	methodButton = screen.getByTestId('deleteTest');
-	fireEvent.click(methodButton);
+    methodButton = screen.getByTestId('getTest');
+    fireEvent.click(methodButton);
 
-  // Submit the form
-  const submitButton = screen.getByRole('button', { name: 'GO!' });
-  fireEvent.click(submitButton);
+    // last one to be pressed
+    methodButton = screen.getByTestId('deleteTest');
+    fireEvent.click(methodButton);
 
-  // Assert that the handleApiCall function is called with the correct request params
-  expect(handleApiCall).toHaveBeenCalledWith({
-    method: 'DELETE',
-    url: 'https://example.com',
-    data: '{ "name": "John" }',
-    headers: {
-      Authorization: 'Bearer my-token',
-    },
+
+    // Submit the form
+    const submitButton = screen.getByTestId('submitButton');
+    fireEvent.click(submitButton);
+
+    // Assert that the handleApiCall function is called with the correct request params
+    expect(handleApiCall).toHaveBeenCalledWith({
+      method: 'DELETE',
+      url: 'https://example.com',
+      data: '{ "name": "John" }',
+      headers: {
+        Authorization: 'Bearer my-token',
+      },
+    });
+  });
+  test("triggers an alert on some action", () => {
+    // mock window.alert
+
+    const handleApiCall = jest.fn();
+    const setDivRequestParams = jest.fn();
+    const dispatch = jest.fn();
+
+    render(<Form
+      handleApiCall={handleApiCall}
+      dispatch={dispatch}
+      setDivRequestParams={setDivRequestParams}
+    />);
+
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    const submitButton = screen.getByTestId('submitButton');
+    fireEvent.click(submitButton);
+
+    // verify alert was called
+    expect(window.alert).toHaveBeenCalledTimes(1);
   });
 
-  // Assert that the output area displays the expected result
-  // expect(screen.getByText('Form submitted!')).toBeInTheDocument();
 });

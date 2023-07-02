@@ -2,13 +2,12 @@ import './Form.sass';
 import { useState } from 'react';
 
 
-function Form({ handleApiCall, requestParams, setRequestParams , divRequestParams , setDivRequestParams, historyDispatch }) {
+function Form({ handleApiCall, requestParams, dispatch }) {
 
   const [method, setMethod] = useState('');
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
   const [data, setData] = useState('');
   const [token, setToken] = useState({});
-  // console.log('Form Component line 11', typeof requestParams);
 
   requestParams = {
     method,
@@ -16,39 +15,30 @@ function Form({ handleApiCall, requestParams, setRequestParams , divRequestParam
     data,
     headers: {
       Authorization: `Bearer ${token}`,
-
     }
   };
-  // console.log('Form Component line 22', requestParams);
 
   function handleMethodChange(e) {
     setMethod(e.target.id.toUpperCase());
-    setDivRequestParams({
-      ...requestParams,
-      method: e.target.id.toUpperCase()
-    });
+    dispatch({ type: 'DIV UPDATE', payload: { method: e.target.id.toUpperCase() } });
   }
 
   function handleUrlChange(e) {
     setUrl(e.target.value)
-    setDivRequestParams({
-      ...requestParams,
-      url: e.target.value
-    });
-    // console.trace(requestParams);
+    dispatch({ type: 'DIV UPDATE', payload: { url: e.target.value } });
   }
 
   function handleSubmit(e, handleApiCall) {
     e.preventDefault();
-    if (!requestParams.method){ //} || !requestParams.url) {
-      alert('Please enter a valid request method');
+    if (!requestParams.method) {
+      alert('Please select a methods.');
       return;
     }
-    // console.trace(requestParams);
-    historyDispatch({ type: 'HISTORY', payload: {method: requestParams.method, url: requestParams.url} });
+    dispatch({ type: 'HISTORY', payload: { method: requestParams.method, url: requestParams.url } });
     handleApiCall(requestParams); // equivalent to callApi(requestParams)
   }
 
+  const buttons = ['GET', 'POST', 'PUT', 'DELETE']
 
   return (
     <>
@@ -84,10 +74,15 @@ function Form({ handleApiCall, requestParams, setRequestParams , divRequestParam
           />
         </label>
         <label className="methods" onClick={handleMethodChange}>
-          <span className={requestParams.method === 'GET' ? 'activeButton' : '' } data-testid="getTest" id="get">GET</span>
-          <span className={requestParams.method === 'POST' ? 'activeButton' : '' } data-testid="postTest" id="post">POST</span>
-          <span className={requestParams.method === 'PUT' ? 'activeButton' : '' } data-testid="putTest" id="put">PUT</span>
-          <span className={requestParams.method === 'DELETE' ? 'activeButton' : '' } data-testid="deleteTest" id="delete">DELETE</span>
+          {buttons.map((button, idx) => (
+            <span
+              className={['button', requestParams.method === button ? 'activeButton' : ''].join(' ')}
+              data-testid={`${button.toLowerCase()}Test`}
+              id={button.toLowerCase()}
+              key={idx}>
+              {button}
+            </span>
+          ))}
         </label>
       </form>
     </>

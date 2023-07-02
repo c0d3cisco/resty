@@ -8,26 +8,30 @@ import Results from './Components/Results';
 import axios from 'axios';
 import History from './Components/History';
 
-const initialState = {
+export const initialState = {
   i:0,
   data: null,
   loading: false,
   history: [],
+  divRequestParams: {
+    method: '',
+    url: '',
+  },
 };
 
 export const dataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD DATA':
+    case 'ADD DATA': // dispatch({ type: 'ADD DATA', payload: data });
       return {
         ...state,
         data: action.payload,
       }
-    case 'LOADING':
+    case 'LOADING': // dispatch({ type: 'LOADING', payload: true });
       return {
         ...state,
         loading: action.payload
       }
-    case 'ITERATE':
+    case 'ITERATE': // dispatch({ type: 'ITERATE' });
       return {
         ...state,
         i: state.i + 1,
@@ -37,6 +41,13 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         history: [...state.history, action.payload],
       }
+    case 'DIV UPDATE':
+      return {
+        ...state,
+        divRequestParams: {
+          ...state.divRequestParams,
+          ...action.payload,
+        }}
     default:
       return state;
   }
@@ -44,14 +55,11 @@ export const dataReducer = (state = initialState, action) => {
 
   function App() {
     const [requestParams, setRequestParams] = useState({});
-    const [divRequestParams, setDivRequestParams] = useState({});
-    // const [i, setI] = useState(0);
     const [state, dispatch] = useReducer(dataReducer, initialState);
 
     async function callApi(requestParams) {
       setRequestParams(requestParams);
       dispatch({ type: 'LOADING', payload: true });
-      console.log('********', requestParams);
     }
 
     useEffect(() => {
@@ -65,15 +73,11 @@ export const dataReducer = (state = initialState, action) => {
           } catch (error) {
             dispatch({ type: 'LOADING', payload: false });
             dispatch({ type: 'ADD DATA', payload: 'No data to display.' });
-            console.error('API call error:', error);
+            // console.error('API call error:', error);
           }
         }
-        // console.log("test I", i);
-        // setI(i + 1);
         dispatch({ type: 'ITERATE' });
-        // dispatch
       }
-      console.log("test");
       fetchData();
 
       // eslint-disable-next-line
@@ -82,17 +86,13 @@ export const dataReducer = (state = initialState, action) => {
     return (
       <React.Fragment>
         <Header />
-        <div data-testid='app-div-method'>Request Method: {divRequestParams?.method}</div>
-        <div data-testid='app-div-url'>URL: {divRequestParams?.url}</div>
+        <div data-testid='app-div-method'>Request Method: {state.divRequestParams?.method}</div>
+        <div data-testid='app-div-url'>URL: {state.divRequestParams?.url}</div>
         <Form
           handleApiCall={callApi}
           requestParams
-          historyDispatch={dispatch}
-          setRequestParams={setRequestParams}
-          divRequestParams
-          setDivRequestParams={setDivRequestParams}
+          dispatch={dispatch}
         />
-        {/* <button onClick={() => dispatch({ type: 'ITERATE' })}> History </button> */}
         <History history={state.history} />
         <Results loading={state.loading} data={state.data} />
         <Footer />
